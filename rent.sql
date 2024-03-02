@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Feb 24, 2024 alle 13:00
--- Versione del server: 10.4.8-MariaDB
--- Versione PHP: 7.3.10
+-- Generation Time: Mar 02, 2024 at 12:37 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,104 +25,133 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `centers`
+-- Table structure for table `centers`
 --
 
 CREATE TABLE `centers` (
-  `center_id` int(16) NOT NULL,
-  `nome` varchar(32) DEFAULT NULL,
-  `indirizzo` varchar(32) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `nome` varchar(32) NOT NULL,
+  `indirizzo` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `items`
+-- Table structure for table `items`
 --
 
 CREATE TABLE `items` (
-  `item_id` int(16) NOT NULL,
-  `type` varchar(16) DEFAULT NULL,
-  `name` varchar(32) DEFAULT NULL,
-  `maker` varchar(32) DEFAULT NULL,
-  `center_id` int(16) NOT NULL,
-  `ci` int(8) UNSIGNED ZEROFILL DEFAULT NULL,
-  `state` varchar(16) NOT NULL DEFAULT 'disponibile'
+  `id` int(11) NOT NULL,
+  `type` varchar(64) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `maker` varchar(64) NOT NULL,
+  `center_id` int(11) NOT NULL,
+  `ci` int(16) NOT NULL,
+  `state` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `rents`
+-- Table structure for table `rents`
 --
 
 CREATE TABLE `rents` (
-  `rent_id` int(16) NOT NULL,
-  `user_id` int(16) NOT NULL,
-  `item_id` int(16) NOT NULL,
-  `date` datetime(6) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `date` datetime(6) NOT NULL,
+  `item` int(11) NOT NULL,
+  `user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `user_id` int(16) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `email` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `n_rents` int(16) UNSIGNED NOT NULL
+  `id` int(11) NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `n_rents` int(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `centers`
+-- Indexes for table `centers`
 --
 ALTER TABLE `centers`
-  ADD PRIMARY KEY (`center_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `items`
+-- Indexes for table `items`
 --
 ALTER TABLE `items`
-  ADD UNIQUE KEY `item_id` (`item_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `center_id` (`center_id`);
 
 --
--- Indici per le tabelle `rents`
+-- Indexes for table `rents`
 --
 ALTER TABLE `rents`
-  ADD PRIMARY KEY (`rent_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `item_id` (`item_id`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `item` (`item`),
+  ADD KEY `user` (`user`);
 
 --
--- Indici per le tabelle `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `rents`
+-- AUTO_INCREMENT for table `centers`
+--
+ALTER TABLE `centers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `rent_id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `items`
+--
+ALTER TABLE `items`
+  ADD CONSTRAINT `center_id` FOREIGN KEY (`center_id`) REFERENCES `centers` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `rents`
+--
+ALTER TABLE `rents`
+  ADD CONSTRAINT `item_id` FOREIGN KEY (`item`) REFERENCES `items` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
