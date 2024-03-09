@@ -1,0 +1,31 @@
+<!-- FILEPATH: /c:/xampp/htdocs/items-rents/index.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet/index.css">
+    <title>Register Form</title>
+</head>
+
+<body>
+    <h2>Register</h2>
+    <form method="post" action="action_check.php">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="hidden" name="action" value="register"><br><br>
+
+        <input type="submit" value="Register">
+        <p>Hai già un account? Esegui il <a href="index.html">login!</a></p>
+    </form>
+</body>
+
+</html>

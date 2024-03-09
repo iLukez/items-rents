@@ -1,18 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #272727;
 }
 
 h2 {
     text-align: center;
-    color: #333;
+    color: #ffffff;
     margin-top: 50px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: fit-content;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
@@ -27,9 +27,11 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px 0;
+input[type="password"],
+input[type="text"] {
+    width: clamp(400px, 40vw, 600px);
+    min-width: 430px;
+    padding: 10px;
     margin: 0 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -41,15 +43,18 @@ input[type="password"] {
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #1f7cd3;
     color: white;
+    border: 2px solid rgba(255, 255, 255, 0);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: 0.1s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid #1f7cd3;
+    color: #1f7cd3
 }

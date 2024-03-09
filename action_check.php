@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-if($_POST["action"] == "login") {
-    // Assuming you have already established a database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "rent";
+$servername = "localhost";
+$svusername = "root";
+$svpassword = "";
+$dbname = "rent";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $svusername, $svpassword, $dbname);
+
+if($_POST["action"] == "login") {
 
     // Get the email and password from $_POST variables
     $email = $_POST['email'];
@@ -27,7 +27,7 @@ if($_POST["action"] == "login") {
 
         // Save the record's column as $_SESSION variables
         $_SESSION['user_id'] = $row['id'];
-        $_SESSION['user_name'] = $row['name'];
+        $_SESSION['username'] = $row['username'];
 
         // Redirect to home.php
         header("Location: home.php");
@@ -39,10 +39,6 @@ if($_POST["action"] == "login") {
     }
 }
 else if ($_POST["action"] == "register") {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "rent";
 
     // Get the email and password from $_POST variables
     $username = $_POST['username'];
@@ -50,9 +46,9 @@ else if ($_POST["action"] == "register") {
     $password = md5($_POST['password']);
 
     // Create a prepared statement to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email=? and pw=? and username=?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND username=?");
 
-    $stmt->bind_param("sss", $email, $pw, $username);
+    $stmt->bind_param("sss", $email, $password, $username);
 
     $stmt->execute();
     $result = $stmt->get_result();
@@ -62,11 +58,14 @@ else if ($_POST["action"] == "register") {
         echo "<p>Torna a pagina di <a href=\"index.php\">login</a></p>";
     }
     else {
-        $stmt = $conn->prepare("INSERT INTO users (username, email, pw) Values (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password) Values (?, ?, ?)");
 
-        $stmt->bind_param("sss", $username, $email, $pw);
+        $stmt->bind_param("sss", $username, $email, $password);
 
         $stmt->execute();
+
+        $_SESSION['user_id'] = $conn->insert_id;
+        $_SESSION['username'] = $username;
         header("Location: home.php");
     }
 }
