@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2024 at 12:59 PM
+-- Generation Time: Mar 16, 2024 at 01:08 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -70,7 +70,9 @@ INSERT INTO `items` (`id`, `type`, `item_name`, `maker`, `center`, `ci`, `state`
 (4, 'Smartwatch', 'Mi Band 7', 'Xiaomi', 2, 573853, 'available'),
 (5, 'Tablet', 'iPad X', 'Apple', 2, 365946, 'available'),
 (6, 'Tablet', 'erTablet X 2024', 'erProduttore', 1, 674866, 'available'),
-(7, 'Smartphone', 'P33 2021', 'Huawei', 3, 999333, 'Rented');
+(7, 'Smartphone', 'P33 2021', 'Huawei', 3, 999333, 'Rented'),
+(8, 'Smartwatch', 'Galaxy Watch 4', 'Samsung', 1, 123456, 'rented'),
+(9, 'Tablet', 'iPad Air 2023', 'Apple', 3, 654321, 'rented');
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,9 @@ INSERT INTO `rents` (`id`, `date`, `item`, `user`) VALUES
 (1, '2024-03-09 00:00:00.000000', 1, 1),
 (2, '2024-03-09 00:00:00.000000', 2, 2),
 (3, '2024-03-08 14:31:24.000000', 3, 2),
-(4, '2024-03-06 15:12:10.000000', 7, 2);
+(4, '2024-03-06 15:12:10.000000', 7, 2),
+(5, '2024-03-14 10:00:00.000000', 8, 3),
+(6, '2024-03-15 11:00:00.000000', 9, 3);
 
 -- --------------------------------------------------------
 
@@ -115,7 +119,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `n_rents`) VALUES
 (1, 'xbaffo', 'xbaffo@gmail.com', '6e6bc4e49dd477ebc98ef4046c067b5f', 0),
-(2, 'piazza', 'piazza@gmail.com', '4558aac7b93717f32323b02d2db1f28b', 0);
+(2, 'piazza', 'piazza@gmail.com', '4558aac7b93717f32323b02d2db1f28b', 0),
+(3, 'luca', 'luca@luca.luca', 'ff377aff39a9345a9cca803fb5c5c081', 2);
 
 --
 -- Indexes for dumped tables
@@ -162,19 +167,19 @@ ALTER TABLE `centers`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

@@ -24,18 +24,12 @@ $result = $stmt->get_result();
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="stylesheet/home.css">
+    <link rel="stylesheet" href="stylesheet/default.css">
     <link rel="stylesheet" href="stylesheet/nav.css">
     <title>Home</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="new_rent.php">Noleggi disponibili</a></li>
-            <li><a href="#">WIP</a></li>
-            <li><a href="#">WIP</a></li>
-        </ul>
-    </nav>
+    <?php include 'nav.php' ?>
 
     <h2>Noleggi utente: <?php echo $username ?></h2>
     <table>

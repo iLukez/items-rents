@@ -1,0 +1,83 @@
+.available {
+    text-align: center;
+    color: rgb(7, 145, 18)
+}
+
+h2 {
+    color: #1f7cd3;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #cccccc;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #1860a3;
+    border-radius: 4px;
+}
+
+select option[disabled] {
+    color: #666666;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #1f7cd3;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #1860a3;
+}
+
+#new-rent-table-title {
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#new-rent-not-selected {
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#new-rent-no-result {
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.new-rent-button {
+    background-color: #1f7cd3;
+    border: 0;
+    width:100%;
+    height: 100%;
+}
+
+.new-rent-button-container {
+    padding: 0;
+}
