@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2024 at 01:08 PM
+-- Generation Time: Mar 23, 2024 at 01:01 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -66,13 +66,18 @@ CREATE TABLE `items` (
 INSERT INTO `items` (`id`, `type`, `item_name`, `maker`, `center`, `ci`, `state`) VALUES
 (1, 'Tablet', 'Tablet Note 20', 'Xiaomi', 1, 114302, 'rented'),
 (2, 'Computer', 'Mac M1 2023', 'Apple', 2, 253955, 'rented'),
-(3, 'Book', 'Le Avventure di Mario', 'Rossi Mario', 2, 849527, 'rented'),
-(4, 'Smartwatch', 'Mi Band 7', 'Xiaomi', 2, 573853, 'available'),
-(5, 'Tablet', 'iPad X', 'Apple', 2, 365946, 'available'),
-(6, 'Tablet', 'erTablet X 2024', 'erProduttore', 1, 674866, 'available'),
-(7, 'Smartphone', 'P33 2021', 'Huawei', 3, 999333, 'Rented'),
+(4, 'Smartwatch', 'Mi Band 7', 'Xiaomi', 2, 573853, 'rented'),
+(5, 'Tablet', 'iPad X', 'Apple', 2, 365946, 'rented'),
+(6, 'Tablet', 'erTablet X 2024', 'erProduttore', 1, 674866, 'rented'),
+(7, 'Smartphone', 'P33 2021', 'Huawei', 3, 999333, 'rented'),
 (8, 'Smartwatch', 'Galaxy Watch 4', 'Samsung', 1, 123456, 'rented'),
-(9, 'Tablet', 'iPad Air 2023', 'Apple', 3, 654321, 'rented');
+(9, 'Tablet', 'iPad Air 2023', 'Apple', 3, 654321, 'rented'),
+(10, 'Computer', 'COMPUTERONE', 'Dell', 1, 2147483647, 'rented'),
+(13, 'Smartphone', 'iPhone 15', 'Apple', 1, 2147483647, 'rented'),
+(15, 'Laptop', 'ThinkPad X1 Carbon', 'Lenovo', 1, 112233, 'rented'),
+(16, 'Smartphone', 'Galaxy S22', 'Samsung', 1, 445566, 'rented'),
+(17, 'Headphones', 'QuietComfort 35', 'Bose', 1, 778899, 'available'),
+(18, 'Camera', 'EOS R5', 'Canon', 1, 101112, 'rented');
 
 -- --------------------------------------------------------
 
@@ -81,7 +86,7 @@ INSERT INTO `items` (`id`, `type`, `item_name`, `maker`, `center`, `ci`, `state`
 --
 
 CREATE TABLE `rents` (
-  `id` int(11) NOT NULL,
+  `rent_id` int(11) NOT NULL,
   `date` datetime(6) NOT NULL,
   `item` int(11) NOT NULL,
   `user` int(11) NOT NULL
@@ -91,13 +96,19 @@ CREATE TABLE `rents` (
 -- Dumping data for table `rents`
 --
 
-INSERT INTO `rents` (`id`, `date`, `item`, `user`) VALUES
+INSERT INTO `rents` (`rent_id`, `date`, `item`, `user`) VALUES
 (1, '2024-03-09 00:00:00.000000', 1, 1),
 (2, '2024-03-09 00:00:00.000000', 2, 2),
-(3, '2024-03-08 14:31:24.000000', 3, 2),
 (4, '2024-03-06 15:12:10.000000', 7, 2),
 (5, '2024-03-14 10:00:00.000000', 8, 3),
-(6, '2024-03-15 11:00:00.000000', 9, 3);
+(6, '2024-03-15 11:00:00.000000', 9, 3),
+(7, '0000-00-00 00:00:00.000000', 4, 1),
+(8, '0000-00-00 00:00:00.000000', 5, 1),
+(9, '0000-00-00 00:00:00.000000', 6, 1),
+(10, '0000-00-00 00:00:00.000000', 10, 1),
+(11, '0000-00-00 00:00:00.000000', 18, 1),
+(12, '0000-00-00 00:00:00.000000', 13, 1),
+(13, '0000-00-00 00:00:00.000000', 15, 1);
 
 -- --------------------------------------------------------
 
@@ -143,7 +154,7 @@ ALTER TABLE `items`
 -- Indexes for table `rents`
 --
 ALTER TABLE `rents`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`rent_id`),
   ADD KEY `item` (`item`),
   ADD KEY `user` (`user`);
 
@@ -167,13 +178,13 @@ ALTER TABLE `centers`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `rent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`

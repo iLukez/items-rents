@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $servername = "localhost";
 $svusername = "root";
@@ -25,7 +26,7 @@ $conn = new mysqli($servername, $svusername, $svpassword, $dbname);
     <?php
     
     ?>
-    <form method="GET">
+    <form id="select-center-form" method="GET">
         <label for="center">Centro:</label>
         <select name="center" id="center">
             <option selected disabled>Seleziona un centro</option>
@@ -37,7 +38,7 @@ $conn = new mysqli($servername, $svusername, $svpassword, $dbname);
             }
             ?>
         </select>
-        <input type="submit">
+        <input id="select-center-submit" type="submit">
     </form>
 
     
@@ -55,11 +56,14 @@ if(isset($_GET["center"])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
+        echo "<form method='POST' action='new_rent_action.php'>";
         echo "<table><tr> <th>NOLEGGIA</th> <th>Tipo</th> <th>Nome Oggetto</th><th>Produttore/Autore</th><th>Cod. Inventario</th><th>Stato</th> </tr>";
         while ($row = $result->fetch_assoc()) {
-            echo "<td class='new-rent-button-container'><button class='new-rent-button'>NOLEGGIA</button></td><td>" . $row['type'] . "</td><td>" . $row['item_name'] . "</td><td>" . $row['maker'] . "</td><td>" . $row['ci'] . "</td><td class='available'>DISPONIBILE</td></tr>";
+            echo "<td class='new-rent-button-container'><input class='new-rent-checkbox' type='checkbox' name='row[]' value='" . $row['id'] . "'></input></td><td>" . $row['type'] . "</td><td>" . $row['item_name'] . "</td><td>" . $row['maker'] . "</td><td>" . $row['ci'] . "</td><td class='available'>DISPONIBILE</td></tr>";
         }
         echo "</table>";
+        echo "<input id ='add-rent-button' type='submit' value='Noleggia oggetti selezionati'></input>";
+        echo "</form>";
     } else {
         echo "<p id='new-rent-no-result'>Nessun articolo disponibile, prova con un altro centro</p>";
     }

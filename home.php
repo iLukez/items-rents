@@ -40,12 +40,15 @@ $result = $stmt->get_result();
             <th>Centro</th>
             <th>Cod. Inventario</th>
             <th>Data</th>
+            <th>Azione</th>
+            <
         </tr>
         <?php 
         while ($row = $result->fetch_assoc()) {
             $date = date("d/m/Y - H:i", strtotime($row['date']));
-            echo "<tr><td>" . $row['type'] . "</td><td>" . $row['item_name'] . "</td><td>" . $row['maker'] . "</td><td>" . $row['center_name'] . "</td><td>" . $row['ci'] . "</td><td>" . $date . "</td></tr>";
+            echo "<tr><td>" . $row['type'] . "</td><td>" . $row['item_name'] . "</td><td>" . $row['maker'] . "</td><td>" . $row['center_name'] . "</td><td>" . $row['ci'] . "</td><td>" . $date . "</td><td><a href='delete_rent.php?rent_id=" . $row['rent_id'] . "&item_id=" . $row['item'] . "'>Elimina</a></td></tr>";
         }
+        $_SESSION['new_rents'] = null;
         ?>
     </table>
 </body>
