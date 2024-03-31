@@ -88,6 +88,10 @@ input[type="submit"]:hover {
     box-shadow: 2px 2px 10px #abd6ff;
 }
 
+.new-rent-button-container {
+    text-align: center;
+}
+
 #add-rent-button:hover {
     background-color: #55adff;
 }
@@ -116,6 +120,7 @@ input[type="submit"]:hover {
 .new-rent-checkbox:checked:after {
     /* Add a checkmark when checked */
     color: #fff;
+    content: '✔';
     font-size: 14px;
     position: absolute;
     left: 50%;

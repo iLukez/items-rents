@@ -45,3 +45,18 @@ tr:nth-child(odd) {
 tr:hover {
     background-color: #fcfcfc;
 }
+
+#no-rents {
+    text-align: center;
+    height: 50px;
+}
+
+#no-rents-new-rent-button {
+    margin-top: 40px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    padding: 15px 30px;
+    background-color: #1f7cd3;
+    text-decoration: none;
+}

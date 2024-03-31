@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2024 at 01:01 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- Creato il: Mar 31, 2024 alle 23:24
+-- Versione del server: 10.4.32-MariaDB
+-- Versione PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,17 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `centers`
+-- Struttura della tabella `centers`
 --
 
 CREATE TABLE `centers` (
   `id` int(11) NOT NULL,
   `center_name` varchar(32) NOT NULL,
   `address` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `centers`
+-- Dump dei dati per la tabella `centers`
 --
 
 INSERT INTO `centers` (`id`, `center_name`, `address`) VALUES
@@ -46,7 +45,7 @@ INSERT INTO `centers` (`id`, `center_name`, `address`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Struttura della tabella `items`
 --
 
 CREATE TABLE `items` (
@@ -57,10 +56,10 @@ CREATE TABLE `items` (
   `center` int(11) NOT NULL,
   `ci` int(16) NOT NULL,
   `state` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `items`
+-- Dump dei dati per la tabella `items`
 --
 
 INSERT INTO `items` (`id`, `type`, `item_name`, `maker`, `center`, `ci`, `state`) VALUES
@@ -70,8 +69,8 @@ INSERT INTO `items` (`id`, `type`, `item_name`, `maker`, `center`, `ci`, `state`
 (5, 'Tablet', 'iPad X', 'Apple', 2, 365946, 'rented'),
 (6, 'Tablet', 'erTablet X 2024', 'erProduttore', 1, 674866, 'rented'),
 (7, 'Smartphone', 'P33 2021', 'Huawei', 3, 999333, 'rented'),
-(8, 'Smartwatch', 'Galaxy Watch 4', 'Samsung', 1, 123456, 'rented'),
-(9, 'Tablet', 'iPad Air 2023', 'Apple', 3, 654321, 'rented'),
+(8, 'Smartwatch', 'Galaxy Watch 4', 'Samsung', 1, 123456, 'available'),
+(9, 'Tablet', 'iPad Air 2023', 'Apple', 3, 654321, 'available'),
 (10, 'Computer', 'COMPUTERONE', 'Dell', 1, 2147483647, 'rented'),
 (13, 'Smartphone', 'iPhone 15', 'Apple', 1, 2147483647, 'rented'),
 (15, 'Laptop', 'ThinkPad X1 Carbon', 'Lenovo', 1, 112233, 'rented'),
@@ -82,7 +81,7 @@ INSERT INTO `items` (`id`, `type`, `item_name`, `maker`, `center`, `ci`, `state`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rents`
+-- Struttura della tabella `rents`
 --
 
 CREATE TABLE `rents` (
@@ -90,18 +89,16 @@ CREATE TABLE `rents` (
   `date` datetime(6) NOT NULL,
   `item` int(11) NOT NULL,
   `user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `rents`
+-- Dump dei dati per la tabella `rents`
 --
 
 INSERT INTO `rents` (`rent_id`, `date`, `item`, `user`) VALUES
 (1, '2024-03-09 00:00:00.000000', 1, 1),
 (2, '2024-03-09 00:00:00.000000', 2, 2),
 (4, '2024-03-06 15:12:10.000000', 7, 2),
-(5, '2024-03-14 10:00:00.000000', 8, 3),
-(6, '2024-03-15 11:00:00.000000', 9, 3),
 (7, '0000-00-00 00:00:00.000000', 4, 1),
 (8, '0000-00-00 00:00:00.000000', 5, 1),
 (9, '0000-00-00 00:00:00.000000', 6, 1),
@@ -113,7 +110,7 @@ INSERT INTO `rents` (`rent_id`, `date`, `item`, `user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struttura della tabella `users`
 --
 
 CREATE TABLE `users` (
@@ -122,10 +119,10 @@ CREATE TABLE `users` (
   `email` varchar(64) NOT NULL,
   `password` varchar(64) NOT NULL,
   `n_rents` int(16) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dump dei dati per la tabella `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `n_rents`) VALUES
@@ -134,24 +131,24 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `n_rents`) VALUES
 (3, 'luca', 'luca@luca.luca', 'ff377aff39a9345a9cca803fb5c5c081', 2);
 
 --
--- Indexes for dumped tables
+-- Indici per le tabelle scaricate
 --
 
 --
--- Indexes for table `centers`
+-- Indici per le tabelle `centers`
 --
 ALTER TABLE `centers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `items`
+-- Indici per le tabelle `items`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `center` (`center`) USING BTREE;
 
 --
--- Indexes for table `rents`
+-- Indici per le tabelle `rents`
 --
 ALTER TABLE `rents`
   ADD PRIMARY KEY (`rent_id`),
@@ -159,51 +156,51 @@ ALTER TABLE `rents`
   ADD KEY `user` (`user`);
 
 --
--- Indexes for table `users`
+-- Indici per le tabelle `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT per le tabelle scaricate
 --
 
 --
--- AUTO_INCREMENT for table `centers`
+-- AUTO_INCREMENT per la tabella `centers`
 --
 ALTER TABLE `centers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `items`
+-- AUTO_INCREMENT per la tabella `items`
 --
 ALTER TABLE `items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `rents`
+-- AUTO_INCREMENT per la tabella `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `rent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `rent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Limiti per le tabelle scaricate
 --
 
 --
--- Constraints for table `items`
+-- Limiti per la tabella `items`
 --
 ALTER TABLE `items`
   ADD CONSTRAINT `center_id` FOREIGN KEY (`center`) REFERENCES `centers` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `rents`
+-- Limiti per la tabella `rents`
 --
 ALTER TABLE `rents`
   ADD CONSTRAINT `item_id` FOREIGN KEY (`item`) REFERENCES `items` (`id`) ON DELETE CASCADE,
