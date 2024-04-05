@@ -49,8 +49,8 @@ $result = $stmt->get_result();
             echo "<div style='text-align:center'><a id='no-rents-new-rent-button' href='new_rent.php'>Nuovo Noleggio</a></div>";
         }
         while ($row = $result->fetch_assoc()) {
-            $date = date("d/m/Y - H:i", strtotime($row['date']));
-            echo "<tr><td>" . $row['type'] . "</td><td>" . $row['item_name'] . "</td><td>" . $row['maker'] . "</td><td>" . $row['center_name'] . "</td><td>" . $row['ci'] . "</td><td>" . $date . "</td><td><a href='delete_rent.php?rent_id=" . $row['rent_id'] . "&item_id=" . $row['item'] . "'>Elimina</a></td></tr>";
+            $date = date("d/m/Y", strtotime($row['date']));
+            echo "<tr><td>" . $row['type'] . "</td><td>" . $row['item_name'] . "</td><td>" . $row['maker'] . "</td><td>" . $row['center_name'] . "</td><td>" . $row['ci'] . "</td><td>" . $date . "</td><td><a href='delete_rent.php?rent_id=" . $row['rent_id'] . "&item_id=" . $row['item'] . "'>Fine Noleggio</a></td></tr>";
         }
         $_SESSION['new_rents'] = null;
         ?>

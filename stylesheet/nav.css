@@ -31,3 +31,8 @@ nav ul li a {
 nav ul li a:hover {
     color: #fff;
 }
+
+#nav-logout {
+    position: absolute;
+    right: 15px;
+}

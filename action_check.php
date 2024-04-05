@@ -29,8 +29,13 @@ if($_POST["action"] == "login") {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
 
-        // Redirect to home.php
-        header("Location: home.php");
+        if ($row['type'] == 'admin') {
+            $_SESSION['admin'] = true;
+            header("Location: home_admin.php");
+        }
+        else {
+            header("Location: home.php");
+        }
         exit();
     } else {
         // Redirect to login_fail.php
