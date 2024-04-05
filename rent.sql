@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mar 31, 2024 alle 23:24
--- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.0.30
+-- Creato il: Apr 02, 2024 alle 16:48
+-- Versione del server: 10.4.28-MariaDB
+-- Versione PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,17 +63,17 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `type`, `item_name`, `maker`, `center`, `ci`, `state`) VALUES
-(1, 'Tablet', 'Tablet Note 20', 'Xiaomi', 1, 114302, 'rented'),
+(1, 'Tablet', 'Tablet Note 20', 'Xiaomi', 1, 114302, 'available'),
 (2, 'Computer', 'Mac M1 2023', 'Apple', 2, 253955, 'rented'),
-(4, 'Smartwatch', 'Mi Band 7', 'Xiaomi', 2, 573853, 'rented'),
-(5, 'Tablet', 'iPad X', 'Apple', 2, 365946, 'rented'),
-(6, 'Tablet', 'erTablet X 2024', 'erProduttore', 1, 674866, 'rented'),
+(4, 'Smartwatch', 'Mi Band 7', 'Xiaomi', 2, 573853, 'available'),
+(5, 'Tablet', 'iPad X', 'Apple', 2, 365946, 'available'),
+(6, 'Tablet', 'erTablet X 2024', 'erProduttore', 1, 674866, 'available'),
 (7, 'Smartphone', 'P33 2021', 'Huawei', 3, 999333, 'rented'),
 (8, 'Smartwatch', 'Galaxy Watch 4', 'Samsung', 1, 123456, 'available'),
 (9, 'Tablet', 'iPad Air 2023', 'Apple', 3, 654321, 'available'),
-(10, 'Computer', 'COMPUTERONE', 'Dell', 1, 2147483647, 'rented'),
-(13, 'Smartphone', 'iPhone 15', 'Apple', 1, 2147483647, 'rented'),
-(15, 'Laptop', 'ThinkPad X1 Carbon', 'Lenovo', 1, 112233, 'rented'),
+(10, 'Computer', 'COMPUTERONE', 'Dell', 1, 2147483647, 'available'),
+(13, 'Smartphone', 'iPhone 15', 'Apple', 1, 2147483647, 'available'),
+(15, 'Laptop', 'ThinkPad X1 Carbon', 'Lenovo', 1, 112233, 'available'),
 (16, 'Smartphone', 'Galaxy S22', 'Samsung', 1, 445566, 'rented'),
 (17, 'Headphones', 'QuietComfort 35', 'Bose', 1, 778899, 'available'),
 (18, 'Camera', 'EOS R5', 'Canon', 1, 101112, 'rented');
@@ -96,16 +96,9 @@ CREATE TABLE `rents` (
 --
 
 INSERT INTO `rents` (`rent_id`, `date`, `item`, `user`) VALUES
-(1, '2024-03-09 00:00:00.000000', 1, 1),
 (2, '2024-03-09 00:00:00.000000', 2, 2),
 (4, '2024-03-06 15:12:10.000000', 7, 2),
-(7, '0000-00-00 00:00:00.000000', 4, 1),
-(8, '0000-00-00 00:00:00.000000', 5, 1),
-(9, '0000-00-00 00:00:00.000000', 6, 1),
-(10, '0000-00-00 00:00:00.000000', 10, 1),
-(11, '0000-00-00 00:00:00.000000', 18, 1),
-(12, '0000-00-00 00:00:00.000000', 13, 1),
-(13, '0000-00-00 00:00:00.000000', 15, 1);
+(11, '0000-00-00 00:00:00.000000', 18, 1);
 
 -- --------------------------------------------------------
 
@@ -181,7 +174,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT per la tabella `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `rent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `rent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT per la tabella `users`

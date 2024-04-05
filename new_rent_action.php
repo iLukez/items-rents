@@ -22,7 +22,6 @@ if (isset($_POST['row'])) {
         $stmt->bind_param("i", $item_id);
         $stmt->execute();
     }
-
     header("Location: home.php");
 }
 else {
