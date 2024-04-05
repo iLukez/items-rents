@@ -22,10 +22,7 @@ $conn = new mysqli($servername, $svusername, $svpassword, $dbname);
 <body>
     <?php include 'nav.php' ?>
     <h2>Nuovo Noleggio</h2>
-
-    <?php
     
-    ?>
     <form id="select-center-form" method="GET">
         <label for="center">Centro:</label>
         <select name="center" id="center">

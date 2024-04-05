@@ -31,7 +31,7 @@ if($_POST["action"] == "login") {
 
         if ($row['type'] == 'admin') {
             $_SESSION['admin'] = true;
-            header("Location: home_admin.php");
+            header("Location: admin_new_resource.php");
         }
         else {
             header("Location: home.php");

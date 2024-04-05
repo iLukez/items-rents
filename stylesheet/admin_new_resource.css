@@ -1,3 +1,9 @@
+h1 {
+    color: #1f7cd3;
+    text-align: center;
+    margin: 70px;
+}
+
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -47,4 +53,16 @@ select {
 
 select option[disabled] {
     color: #666666;
+}
+
+#admin-success {
+    color: #28a745;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#admin-error {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 20px;
 }

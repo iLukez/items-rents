@@ -1,0 +1,61 @@
+.rented {
+    color: #ff0000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.unavailable {
+    color: #828282;
+    font-weight: bold;
+    text-align: center;
+}
+
+#available-table-head-row th {
+    background-color: #0ca03b;
+    color: #fff;
+}
+
+#rented-table-head-row th {
+    background-color: #c90303;
+    color: #fff;
+}
+
+#unavailable-table-head-row th {
+    background-color: #606060;
+    color: #fff;
+}
+
+#rented-table-title, #available-table-title, #unavailable-table-title {
+    color: #fff;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#rented-table {
+    color: #c90303;
+}
+
+#available-table {
+    color: #0ca03b;
+}
+
+#unavailable-table {
+    color: #606060;
+}
+
+#legend-container {
+    color: #fff;
+    margin-left: 250px;
+    margin-top: 30px;
+}
+
+#new-rent-no-result {
+    color: #c90303;
+    font-style: italic;
+}
+
+#info {
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+}
